@@ -54,8 +54,12 @@
 				<strong>Pick a route</strong>
 				<ol id="routes-list"></ol>
 			</div>
-			
     </div> <!-- controls-holder -->
+    
+    <div id="directions-container">
+			<div id="directions-panel">
+			</div>
+		</div>
     
     <div id="credit-big" class="mapctl static">
     	Wordy credits go here

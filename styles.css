@@ -8,6 +8,8 @@ body {
 
 #map-canvas { 
 	height: 100%; 
+	width: 100%;
+	float: left;
 	z-index: 1;
 }
 
@@ -95,4 +97,20 @@ body {
 #routes-list li:hover {
 	text-decoration: underline;
 	color: blue;
+}
+
+#directions-container {
+	width: 30%;
+	height: 100%;
+	display: none;
+	float: right;
+	overflow: scroll;
+}
+
+#directions-panel {
+	border-left: 1px solid black;
+}
+
+div.adp-warnbox {
+	margin-top: 0px;
 }

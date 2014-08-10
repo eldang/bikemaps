@@ -57,15 +57,9 @@ function findRoute() {
 	
 	directionsService.route(dirReq,  function(result, status) {
 		console.log(result, status);
-		pickRoute(-1);
+		pickRoute(-1); // clear any existing routes
 		if (status === google.maps.DirectionsStatus.OK) {
 			var dirPicker = document.getElementById("directions-picker");
-			
-			if (result.routes.length > 1) {
-				dirPicker.style.display= 'inline';
-			} else {
-				dirPicker.style.display= 'none';
-			}
 			
 			var routesList = document.getElementById("routes-list");
 			routesList.innerHTML = "";
@@ -81,6 +75,14 @@ function findRoute() {
 															+ result.routes[i].summary
 															+ "</li>";
 			}
+
+			if (result.routes.length > 1) {
+				dirPicker.style.display= 'inline';
+			} else {
+				dirPicker.style.display= 'none';
+				pickRoute(0); // make sure previous routes are all cleared, and anything we run on route selection autoruns if there was only one option anyway
+			}
+
 		} else if (status === google.maps.DirectionsStatus.NOT_FOUND) {
 			window.alert("Google Maps couldn't find one or both of those places.");
 		} else if (status === google.maps.DirectionsStatus.ZERO_RESULTS) {
@@ -98,13 +100,24 @@ function findRoute() {
 
 
 function pickRoute(chosen) {
+	var dirTextContainer = document.getElementById('directions-container');
+	var dirTextPanel = document.getElementById('directions-panel');
+	var mapPanel = document.getElementById("map-canvas");
+
 	for (var i = 0; i < directionsArray.length; i++) {
-		console.log(i, chosen, directionsArray[i]);
 		if (i === chosen) {
 			directionsArray[i].setMap(map);
+			directionsArray[i].setPanel(dirTextPanel);
+			dirTextContainer.style.display = 'block';
+			mapPanel.style.width = '70%';
 		} else {
 			directionsArray[i].setMap(null);
 		}
+	}
+	if (chosen === -1) { 
+		directionsArray = []; 
+			dirTextContainer.style.display = 'none';
+			mapPanel.style.width = '100%';
 	}
 }
 
