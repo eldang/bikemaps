@@ -76,16 +76,23 @@ body {
 
 #directions-picker {
 	margin-left: 2ex;
+	margin-top: 1em;
 	padding: 1ex 1em;
 	float: right;
 	display: none;
-	border: 1px solid #666666;
-	border-radius: 2px;
-	box-shadow: #333333 0px 2px 6px -3px;
 }
 
 #routes-list, #routes-list li {
 	padding: 0px;
 	margin: 0px;
 	list-style-position: inside;
+}
+
+#routes-list li {
+	cursor: pointer;
+}
+
+#routes-list li:hover {
+	text-decoration: underline;
+	color: blue;
 }

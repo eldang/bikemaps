@@ -28,8 +28,8 @@ function initialize() {
 		draggable: true
 	};
 	
-	directionsService = new google.maps.DirectionsService(rendererOptions);
-	directionsDisplay = new google.maps.DirectionsRenderer();
+	directionsService = new google.maps.DirectionsService();
+	directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 	directionsDisplay.setMap(map);
 
 	google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
@@ -37,7 +37,7 @@ function initialize() {
 	});
 
 	
-	var dirCtl = document.getElementById("directions-input");
+	var dirCtl = document.getElementById("controls-holder");
 	map.controls[google.maps.ControlPosition.TOP_CENTER].push(dirCtl);
 	
 	var creditBig = document.getElementById("credit-big");
