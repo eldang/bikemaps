@@ -20,6 +20,8 @@ function initialize() {
 	};
 	
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+	directionsService = new google.maps.DirectionsService();
 			
 	var bikeLayer = new google.maps.BicyclingLayer();
 	bikeLayer.setMap(map);
@@ -27,15 +29,6 @@ function initialize() {
 	var rendererOptions = {
 		draggable: true
 	};
-	
-	directionsService = new google.maps.DirectionsService();
-	directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-	directionsDisplay.setMap(map);
-
-	google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
-		directionsDisplay.getDirections();
-	});
-
 	
 	var dirCtl = document.getElementById("controls-holder");
 	map.controls[google.maps.ControlPosition.TOP_CENTER].push(dirCtl);
@@ -80,7 +73,8 @@ function findRoute() {
 				directionsArray[i] = new google.maps.DirectionsRenderer({
 					map: map,
 					directions: result,
-					routeIndex: i
+					routeIndex: i,
+					draggable: true
 				});
 				routesList.innerHTML = routesList.innerHTML 
 															+ "<li onclick='pickRoute("+i+");'>"
@@ -117,7 +111,6 @@ function pickRoute(chosen) {
 
 var map;
 var directionsService;
-var directionsDisplay;
 var directionsArray = [];
 
 google.maps.event.addDomListener(window, 'load', initialize);
