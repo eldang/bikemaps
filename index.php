@@ -46,6 +46,11 @@
     	>
     		Go
     	</span>
+    	
+    	<div id="directions-picker" class="showhide">
+    		<strong>Pick a route</strong>
+    		<ol id="routes-list"></ol>
+    	</div>
     </div> <!-- directions-input -->
     
     <div id="credit-big" class="mapctl static">
