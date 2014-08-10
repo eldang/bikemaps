@@ -1,0 +1,75 @@
+html { height: 100%; }
+
+body { 
+	height: 100%; 
+	margin: 0; 
+	padding: 0; 
+}
+
+#map-canvas { 
+	height: 100%; 
+	z-index: 1;
+}
+
+.mapctl {
+	border: 1px solid #aaaaaa;
+	color: #333333;
+	background: #eeeeee;
+	padding: 1.5ex 1em;
+	box-shadow: #000000 0px 4px 12px -5px;
+	border-radius: 3px;
+	font-family: Baskerville, Georgia, 'Times New Roman', Times, serif;
+}
+
+#directions-input {
+	z-index: 30;
+	margin-top: 2ex;
+	font-size: 10pt;
+}
+
+#credit-big {
+	z-index: 20;
+	margin-left: 2em;
+	font-size: 12pt;
+}
+
+#credit-small {
+	z-index: 10;
+	margin-bottom: 2ex;
+	font-size: 8pt;
+}
+
+.textbox {
+	border: 1px solid #aaaaaa;
+	color: #333333;
+	background: #f9f9f9;
+	padding: 1ex;
+	border-radius: 2px;
+	font-family: Baskerville, Georgia, 'Times New Roman', Times, serif;
+	box-shadow: #292929 0px 1px 3px -2px;
+}
+
+#dirFrom {
+	margin-right: 1ex;
+}
+
+#dirTo {
+	margin-left: 1ex;
+	margin-right: 1ex;
+}
+
+.submit-button {
+	padding: 0.5ex 1ex;
+	color: #eeeeee;
+	background: #777777;
+	border: 1px solid #333333;
+	border-radius: 2px;
+	text-align: center;
+	font-weight: bold;
+	box-shadow: #000000 0px 2px 6px -3px;
+	cursor: pointer;
+}
+
+#dirSubmit {
+	margin-left: 1ex;
+}
