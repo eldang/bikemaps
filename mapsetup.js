@@ -14,23 +14,31 @@ function initialize() {
 			
 	var bikeLayer = new google.maps.BicyclingLayer();
 	bikeLayer.setMap(map);
+
+	var rendererOptions = {
+		draggable: true
+	};
 	
-	directionsService = new google.maps.DirectionsService();
+	directionsService = new google.maps.DirectionsService(rendererOptions);
 	directionsDisplay = new google.maps.DirectionsRenderer();
 	directionsDisplay.setMap(map);
+
+	google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+		directionsDisplay.getDirections();
+	});
+
 	
 	var dirCtl = document.getElementById("directions-input");
 	map.controls[google.maps.ControlPosition.TOP_CENTER].push(dirCtl);
-	
-//	var dirSubmitBtn = document.getElementById("dirSubmit");
-//	google.maps.event.addDomListener(dirSubmitBtn, 'click', findRoute());
 	
 	var creditBig = document.getElementById("credit-big");
 	map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(creditBig);
 
 	var creditSmall = document.getElementById("credit-small");
 	map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(creditSmall);
-}
+} // end function initialize()
+
+
 
 function findRoute() {
 	var fromString = document.getElementById("dirFrom").value;
@@ -49,10 +57,11 @@ function findRoute() {
 			directionsDisplay.setDirections(result);
 		}
 	});
-}
+} // end function findRoute()
+
+
 
 var directionsService;
 var directionsDisplay;
-
 
 google.maps.event.addDomListener(window, 'load', initialize);

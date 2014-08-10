@@ -20,10 +20,32 @@
     <div id="map-canvas"></div>
     
     <div id="directions-input" class="mapctl dynamic">
-    	<input type="text" id="dirFrom" class="textbox" size="30" value="From"  onfocus="if (this.value=='From') this.value=''" onchange="findRoute();" />
+    	<input 
+    		type="text" 
+    		id="dirFrom" 
+    		class="textbox" 
+    		size="30" 
+    		value="From" 
+    		onfocus="if (this.value=='From') this.value=''" 
+    		onchange="findRoute();" 
+    	/>
     	to
-    	<input type="text" id="dirTo" class="textbox" size="30" value="To"  onfocus="if (this.value=='To') this.value=''" onchange="findRoute();" />
-    	<span id="dirSubmit" class="submit-button" onclick="findRoute();">Go</span>
+    	<input 
+    		type="text" 
+    		id="dirTo" 
+    		class="textbox" 
+    		size="30" 
+    		value="To" 
+    		onfocus="if (this.value=='To') this.value=''" 
+    		onchange="findRoute();" 
+    	/>
+    	<span 
+    		id="dirSubmit" 
+    		class="submit-button" 
+    		onclick="findRoute();"
+    	>
+    		Go
+    	</span>
     </div> <!-- directions-input -->
     
     <div id="credit-big" class="mapctl static">
