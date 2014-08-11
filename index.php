@@ -65,7 +65,7 @@
 			<br />
 			This is a very rough sketch of something.
 			<br />
-			Please see the <a href="https://github.com/eldang/bikemaps/issues">Github issues page</a> for a sense of what still needs doing.
+			Please see the <a href="https://github.com/eldang/bikemaps">Github  page</a> for a sense of what still needs doing.
 			<br />
 			Patches welcome!
     </div> <!-- credit-big -->
