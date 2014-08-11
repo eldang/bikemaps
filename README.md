@@ -21,6 +21,7 @@ If you have a server than can host PHP files:
 ```
 
 If you don't have a server that can host PHP files, then do the following additional steps:
+
 4. Rename `index.php` to `index.html`
 5. Replace `<?php require_once("./APIloader.php"); ?>` in `index.html` with the contents of the file as above.
 
