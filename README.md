@@ -12,7 +12,7 @@ If you have a server than can host PHP files:
 1. Get an API key by following the instructions at https://developers.google.com/maps/documentation/javascript/tutorial#api_key
 2. Put all the files in one directory on the server.
 3. Add a file called `APIloader.php` which will load the Google Maps JavaScript API using your key.  It should look like this - just replace `XXXXX` with the API key:
-```javascript
+```php
 <script 
 	type = "text/javascript"
 	src = "https://maps.googleapis.com/maps/api/js?v=3.17&key=XXXXX"
