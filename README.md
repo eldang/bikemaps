@@ -1,7 +1,5 @@
-bikemaps
+bikemaps - Google Maps tailored for bike route planning
 =========
-
-# Google Maps tailored for bike route planning
 
 I've been frustrated with some odd restrictions that the New Google Maps has; most of all with not being able to view terrain while getting bike directions.  I decided to roll my own alternative using their API, and this is my work in progress.  You can see it in operation at http://eldan.co.uk/bikemaps/
 
