@@ -22,6 +22,8 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 	directionsService = new google.maps.DirectionsService();
+	
+	elevator = new google.maps.ElevationService();
 			
 	var bikeLayer = new google.maps.BicyclingLayer();
 	bikeLayer.setMap(map);
@@ -56,7 +58,6 @@ function findRoute() {
 	};
 	
 	directionsService.route(dirReq,  function(result, status) {
-		console.log(result, status);
 		pickRoute(-1); // clear any existing routes
 		if (status === google.maps.DirectionsStatus.OK) {
 			var dirPicker = document.getElementById("directions-picker");
@@ -106,18 +107,80 @@ function pickRoute(chosen) {
 
 	for (var i = 0; i < directionsArray.length; i++) {
 		if (i === chosen) {
-			directionsArray[i].setMap(map);
-			directionsArray[i].setPanel(dirTextPanel);
 			dirTextContainer.style.display = 'block';
 			mapPanel.style.width = '70%';
+			directionsArray[i].setMap(map);
+			directionsArray[i].setPanel(dirTextPanel);
+			console.log(directionsArray[i]);
+			drawElevationChart(directionsArray[i].directions.routes[i].legs);
 		} else {
 			directionsArray[i].setMap(null);
+			directionsArray[i].setPanel(null);
 		}
 	}
 	if (chosen === -1) { 
 		directionsArray = []; 
 			dirTextContainer.style.display = 'none';
 			mapPanel.style.width = '100%';
+			document.getElementById('directions-container').style.display = 'none';
+			mapPanel.style.height = '100%';
+	}
+}
+
+
+function drawElevationChart(route) {
+	chart = new google.visualization.ColumnChart(document.getElementById('elevation-panel'));
+	
+	var path = [route[0].start_location];
+	
+	for (var i = 0; i < route.length; i++) {
+		for (var j = 0; j < route[i].steps.length; j++) {
+			path.push(route[i].steps[j].end_location);
+		}
+	}
+	
+	var pathRequest = {
+		'path': path,
+		'samples': 300
+	}
+
+	elevator.getElevationAlongPath(pathRequest, plotElevation);
+}
+
+
+function plotElevation(results, status) {
+	console.log(results, status);
+
+	var elevTextContainer = document.getElementById('elevation-container');
+	var elevTextPanel = document.getElementById('elevation-panel');
+	var mapPanel = document.getElementById("map-canvas");
+	
+	if (status == google.maps.ElevationStatus.OK) {
+		var elevationPath = [];
+		for (var i = 0; i < results.length; i++) {
+			elevationPath.push(results[i].location);
+    }
+    
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Sample');
+    data.addColumn('number', 'Elevation');
+    for (var i = 0; i < results.length; i++) {
+    	if (results[i].elevation > 0) {
+				data.addRow([i.toString(), results[i].elevation * 3.28084]);
+			} else {
+				data.addRow([i.toString(), 0]);
+			}
+    }
+		
+		chart.draw(data, {
+			width: window.innerWidth * 0.7,
+			height: window.innerHeight * 0.25,
+			legend: 'none',
+			titleY: 'Elevation (ft)'
+		});
+
+		elevTextContainer.style.display = 'block';
+		mapPanel.style.height = '75%';
 	}
 }
 
@@ -125,5 +188,8 @@ function pickRoute(chosen) {
 var map;
 var directionsService;
 var directionsArray = [];
+var elevator;
 
+google.load('visualization', '1', {packages: ['columnchart']});
 google.maps.event.addDomListener(window, 'load', initialize);
+

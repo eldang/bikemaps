@@ -10,7 +10,8 @@
 
     <link rel="stylesheet" href="./styles.css">
     
-    <?php require_once("./APIloader.php"); ?>
+    <script src="https://www.google.com/jsapi"></script>
+    <?php require_once("./APIloader.php"); ?> <!-- the php include loads the Google Maps JS API with my key -->
 
     <script type="text/javascript" src="./mapsetup.js"></script>
 
@@ -56,11 +57,6 @@
 			</div>
     </div> <!-- controls-holder -->
     
-    <div id="directions-container">
-			<div id="directions-panel">
-			</div>
-		</div>
-    
     <div id="credit-big" class="mapctl static">
     	Wordy credits go here
     </div> <!-- credit-big -->
@@ -68,6 +64,16 @@
     <div id="credit-small" class="mapctl static">
     	Minimised credits here
     </div> <!-- credit-small -->
+
+    <div id="directions-container">
+			<div id="directions-panel">
+			</div>
+		</div>
+
+    <div id="elevation-container">
+			<div id="elevation-panel">
+			</div>
+		</div>
     
   </body>
 </html>

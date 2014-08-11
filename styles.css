@@ -104,13 +104,28 @@ body {
 	height: 100%;
 	display: none;
 	float: right;
-	overflow: scroll;
+	overflow-y: scroll;
+	box-shadow: #000000 0px 4px 12px -5px;
 }
 
 #directions-panel {
 	border-left: 1px solid black;
+	z-index: 50;
 }
 
 div.adp-warnbox {
 	margin-top: 0px;
+}
+
+#elevation-container {
+	width: 70%;
+	height: 25%;
+	display: none;
+	float: left;
+	box-shadow: #000000 0px 4px 12px -5px;
+}
+
+#elevation-panel {
+	border-top: 1px solid black;
+	z-index: 40;
 }
