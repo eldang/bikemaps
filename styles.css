@@ -39,6 +39,7 @@ body {
 	z-index: 10;
 	margin-bottom: 2ex;
 	font-size: 8pt;
+	display: none;
 }
 
 .textbox {
@@ -77,11 +78,21 @@ body {
 }
 
 #directions-picker {
-	margin-left: 2ex;
+	margin-left: 1ex;
 	margin-top: 1em;
 	padding: 1ex 1em;
 	float: right;
 	display: none;
+	width: 125px;
+}
+
+#elevation-panel {
+	margin-right: 1ex;
+	margin-top: 1em;
+	padding: 3px 2px 0px 1px;
+	float: left;
+	display: none;
+	background: white;
 }
 
 #routes-list, #routes-list li {
@@ -115,17 +126,4 @@ body {
 
 div.adp-warnbox {
 	margin-top: 0px;
-}
-
-#elevation-container {
-	width: 70%;
-	height: 25%;
-	display: none;
-	float: left;
-	box-shadow: #000000 0px 4px 12px -5px;
-}
-
-#elevation-panel {
-	border-top: 1px solid black;
-	z-index: 40;
 }

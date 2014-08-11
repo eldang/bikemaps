@@ -48,7 +48,6 @@ function findRoute() {
 	var fromString = document.getElementById("dirFrom").value;
 	var toString = document.getElementById("dirTo").value;
 
-	console.log(fromString, "to", toString);
 	dirReq = {
 		origin: fromString,
 		destination: toString,
@@ -151,9 +150,7 @@ function drawElevationChart(route) {
 function plotElevation(results, status) {
 	console.log(results, status);
 
-	var elevTextContainer = document.getElementById('elevation-container');
 	var elevTextPanel = document.getElementById('elevation-panel');
-	var mapPanel = document.getElementById("map-canvas");
 	
 	if (status == google.maps.ElevationStatus.OK) {
 		var elevationPath = [];
@@ -173,15 +170,20 @@ function plotElevation(results, status) {
     }
 		
 		chart.draw(data, {
-			width: window.innerWidth * 0.7,
-			height: window.innerHeight * 0.25,
+			width: 300,
+			height: 100,
 			legend: 'none',
 			titleY: 'Elevation (ft)'
 		});
 
-		elevTextContainer.style.display = 'block';
-		mapPanel.style.height = '75%';
+		elevTextPanel.style.display = 'block';
 	}
+}
+
+
+function toggle(hideme, showme) {
+	document.getElementById(hideme).style.display = 'none';
+	document.getElementById(showme).style.display = 'block';	
 }
 
 

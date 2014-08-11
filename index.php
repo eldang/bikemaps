@@ -55,23 +55,27 @@
 				<strong>Pick a route</strong>
 				<ol id="routes-list"></ol>
 			</div>
+
+			<div id="elevation-panel" class="mapctl static">
+			</div>
     </div> <!-- controls-holder -->
     
-    <div id="credit-big" class="mapctl static">
-    	Wordy credits go here
+    <div id="credit-big" class="mapctl static" onclick="toggle('credit-big', 'credit-small');">
+    	Made by <a href="http://eldan.co.uk/">Eldan Goldenberg</a>
+			<br />
+			This is a very rough sketch of something.
+			<br />
+			Please see the <a href="https://github.com/eldang/bikemaps/issues">Github issues page</a> for a sense of what still needs doing.
+			<br />
+			Patches welcome!
     </div> <!-- credit-big -->
     
-    <div id="credit-small" class="mapctl static">
-    	Minimised credits here
+    <div id="credit-small" class="mapctl static" onclick="toggle('credit-small', 'credit-big');">
+    	Made by <a href="http://eldan.co.uk/">Eldan Goldenberg</a>
     </div> <!-- credit-small -->
 
     <div id="directions-container">
 			<div id="directions-panel">
-			</div>
-		</div>
-
-    <div id="elevation-container">
-			<div id="elevation-panel">
 			</div>
 		</div>
     
